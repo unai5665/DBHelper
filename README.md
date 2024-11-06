@@ -47,7 +47,7 @@ A continuación, se muestran capturas de pantalla de la interfaz de usuario para
 ![Pantalla principal](https://github.com/unai5665/DBHelper/blob/master/img1.PNG)
 *Pantalla principal donde se ingresan y guardan los datos del usuario.*
 
-![Pantalla con un usuario ingresado](ruta/de/tu/imagen2.png)
+![Pantalla con un usuario ingresado](https://github.com/unai5665/DBHelper/blob/master/img2.PNG)
 *Pantalla principal con un usuario ingresado.*
 
 ---
