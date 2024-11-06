@@ -1,5 +1,6 @@
 package org.iesharia.myapplication
 
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import android.widget.Toast
@@ -72,6 +73,22 @@ fun MainActivity(modifier: Modifier) {
     var selectedId by remember { mutableStateOf(-1) }
     var dataList by remember { mutableStateOf(listOf<Triple<Int, String, String>>()) }
 
+    fun loadData() {
+        val cursor: Cursor? = db.getName()
+        val list = mutableListOf<Triple<Int, String, String>>()
+        cursor?.let {
+            if (it.moveToFirst()) {
+                do {
+                    val id = it.getInt(it.getColumnIndex(DBHelper.ID_COL))
+                    val name = it.getString(it.getColumnIndex(DBHelper.NAME_COl))
+                    val age = it.getString(it.getColumnIndex(DBHelper.AGE_COL))
+                    list.add(Triple(id, name, age))
+                } while (it.moveToNext())
+            }
+            it.close()
+        }
+        dataList = list
+    }
 
     Column (
         verticalArrangement = Arrangement.Center,
