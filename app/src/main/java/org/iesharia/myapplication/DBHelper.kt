@@ -56,7 +56,11 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory? = null) 
         return db.update(TABLE_NAME, values, "$ID_COL = ?", arrayOf(id.toString()))
     }
 
+    fun deleteName(id: Int): Int {
+        val db = this.writableDatabase
 
+        return db.delete(TABLE_NAME, "$ID_COL = ?", arrayOf(id.toString()))
+    }
 
 
 
