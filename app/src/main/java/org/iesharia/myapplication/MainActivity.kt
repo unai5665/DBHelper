@@ -155,27 +155,6 @@ fun MainActivity(modifier: Modifier) {
             ) {
                 Text(text = "Añadir")
             }
-            Button(
-                modifier = bModifier,
-                onClick = {
-                    loadData()
-                    val cursor = db.getName()
-                    if (cursor != null && cursor.moveToFirst()) {
-                        lName = "Nombre"
-                        lAge = "Edad"
-                        do {
-                            val id = cursor.getInt(cursor.getColumnIndex(DBHelper.ID_COL))
-                            val name = cursor.getString(cursor.getColumnIndex(DBHelper.NAME_COl))
-                            val age = cursor.getString(cursor.getColumnIndex(DBHelper.AGE_COL))
-                            lName += "\n$id - $name"
-                            lAge += "\n$age"
-                        } while (cursor.moveToNext())
-                        cursor.close()
-                    }
-                }
-            ) {
-                Text(text = "Mostrar")
-            }
         }
         Row { Button(
             modifier = bModifier,
