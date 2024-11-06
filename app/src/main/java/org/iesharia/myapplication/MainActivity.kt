@@ -174,6 +174,42 @@ fun MainActivity(modifier: Modifier) {
         ) {
             Text(text = "Actualizar")
         }
+            Button(
+                modifier = bModifier,
+                onClick = {
+                    if (selectedId != -1) {
+                        db.deleteName(selectedId)
+                        Toast.makeText(
+                            context,
+                            "Registro eliminado",
+                            Toast.LENGTH_LONG
+                        ).show()
+                        selectedId = -1
+                        nameValue = ""
+                        ageValue = ""
+                    } else {
+                        Toast.makeText(
+                            context,
+                            "Selecciona un registro para eliminar",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                }
+            ) {
+                Text(text = "Eliminar")
+            }
+        }
+
+        Row {
+            Text(
+                modifier = bModifier,
+                text = lName
+            )
+            Text(
+                modifier = bModifier,
+                text = lAge
+            )
+
         }
     }
 }
