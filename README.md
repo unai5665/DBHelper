@@ -44,11 +44,11 @@ Creado por **Unai Perez Toscano**
 
 A continuación, se muestran capturas de pantalla de la interfaz de usuario para ilustrar el flujo y las funcionalidades de la aplicación:
 
-![Pantalla principal](ruta/de/tu/imagen1.png)
+![Pantalla principal](https://github.com/unai5665/DBHelper/blob/master/img1.PNG)
 *Pantalla principal donde se ingresan y guardan los datos del usuario.*
 
-![Pantalla de modificación](ruta/de/tu/imagen2.png)
-*Pantalla para editar o eliminar información de un usuario registrado.*
+![Pantalla con un usuario ingresado](ruta/de/tu/imagen2.png)
+*Pantalla principal con un usuario ingresado.*
 
 ---
 
