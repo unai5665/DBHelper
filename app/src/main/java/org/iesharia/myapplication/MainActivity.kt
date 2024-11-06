@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -15,10 +16,13 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -31,8 +35,6 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import org.iesharia.myapplication.ui.theme.MyApplicationTheme
 
 
@@ -88,6 +90,9 @@ fun MainActivity(modifier: Modifier) {
             it.close()
         }
         dataList = list
+    }
+    LaunchedEffect(Unit) {
+        loadData()
     }
 
     Column (
@@ -204,17 +209,22 @@ fun MainActivity(modifier: Modifier) {
                 Text(text = "Eliminar")
             }
         }
-
-        Row {
-            Text(
-                modifier = bModifier,
-                text = lName
-            )
-            Text(
-                modifier = bModifier,
-                text = lAge
-            )
-
+        LazyColumn(modifier = Modifier.fillMaxWidth().padding(10.dp)) {
+            items(dataList) { item ->
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable {
+                            selectedId = item.first
+                            nameValue = item.second
+                            ageValue = item.third
+                        }
+                        .padding(10.dp)
+                ) {
+                    Text(text = "${item.first} - ${item.second}", modifier = Modifier.weight(1f))
+                    Text(text = item.third)
+                }
+            }
         }
     }
 }
