@@ -150,16 +150,31 @@ fun MainActivity(modifier: Modifier) {
                 Text(text = "Mostrar")
             }
         }
-        Row {
-            Text(
-                modifier = bModifier,
-                text = lName
-            )
-            Text(
-                modifier = bModifier,
-                text = lAge
-            )
+        Row { Button(
+            modifier = bModifier,
+            onClick = {
+                if (selectedId != -1) {
+                    db.updateName(selectedId, nameValue, ageValue)
+                    Toast.makeText(
+                        context,
+                        "Registro actualizado",
+                        Toast.LENGTH_LONG
+                    ).show()
+                    selectedId = -1
+                    nameValue = ""
+                    ageValue = ""
+                } else {
+                    Toast.makeText(
+                        context,
+                        "Selecciona un registro para actualizar",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            }
+        ) {
+            Text(text = "Actualizar")
         }
-
+        }
     }
 }
+
