@@ -65,6 +65,11 @@ fun MainActivity(modifier: Modifier) {
     var lName:String by remember { mutableStateOf("Nombre") }
     var lAge:String by remember { mutableStateOf("Edad") }
 
+    var nameValue by remember { mutableStateOf("") }
+    var ageValue by remember { mutableStateOf("") }
+
+    var selectedId by remember { mutableStateOf(-1) }
+
     Column (
         verticalArrangement = Arrangement.Center,
         modifier = modifier,
