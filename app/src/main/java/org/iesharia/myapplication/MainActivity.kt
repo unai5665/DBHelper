@@ -150,6 +150,7 @@ fun MainActivity(modifier: Modifier) {
 
                     nameValue = ""
                     ageValue = ""
+                    loadData()
                 }
             ) {
                 Text(text = "Añadir")
@@ -157,6 +158,7 @@ fun MainActivity(modifier: Modifier) {
             Button(
                 modifier = bModifier,
                 onClick = {
+                    loadData()
                     val cursor = db.getName()
                     if (cursor != null && cursor.moveToFirst()) {
                         lName = "Nombre"
