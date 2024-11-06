@@ -189,24 +189,16 @@ fun MainActivity(modifier: Modifier) {
         }
             Button(
                 modifier = bModifier,
-                onClick = {
-                    if (selectedId != -1) {
-                        db.deleteName(selectedId)
-                        Toast.makeText(
-                            context,
-                            "Registro eliminado",
-                            Toast.LENGTH_LONG
-                        ).show()
-                        selectedId = -1
-                        nameValue = ""
-                        ageValue = ""
-                    } else {
-                        Toast.makeText(
-                            context,
-                            "Selecciona un registro para eliminar",
-                            Toast.LENGTH_LONG
-                        ).show()
-                    }
+                onClick = {if (selectedId != -1) {
+                    db.deleteName(selectedId)
+                    Toast.makeText(context, "Registro eliminado", Toast.LENGTH_LONG).show()
+                    selectedId = -1
+                    nameValue = ""
+                    ageValue = ""
+                    loadData()
+                } else {
+                    Toast.makeText(context, "Selecciona un registro para eliminar", Toast.LENGTH_LONG).show()
+                }
                 }
             ) {
                 Text(text = "Eliminar")
