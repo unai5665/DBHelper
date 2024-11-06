@@ -69,8 +69,9 @@ fun MainActivity(modifier: Modifier) {
 
     var nameValue by remember { mutableStateOf("") }
     var ageValue by remember { mutableStateOf("") }
-
     var selectedId by remember { mutableStateOf(-1) }
+    var dataList by remember { mutableStateOf(listOf<Triple<Int, String, String>>()) }
+
 
     Column (
         verticalArrangement = Arrangement.Center,
