@@ -85,8 +85,7 @@ fun MainActivity(modifier: Modifier) {
             fontSize = 10.sp
 
         )
-        //Nombre
-        var nameValue by remember { mutableStateOf("") }
+
         OutlinedTextField(
             value = nameValue,
             onValueChange = {
@@ -98,8 +97,6 @@ fun MainActivity(modifier: Modifier) {
             singleLine = true,
             shape = RoundedCornerShape(10.dp)
         )
-        //Edad
-        var ageValue by remember { mutableStateOf("") }
         OutlinedTextField(
             value = ageValue,
             onValueChange = {
@@ -116,11 +113,8 @@ fun MainActivity(modifier: Modifier) {
             Button(
                 modifier = bModifier,
                 onClick = {
-
-
                     val name = nameValue
                     val age = ageValue
-
                     db.addName(name, age)
 
                     Toast.makeText(
@@ -138,20 +132,19 @@ fun MainActivity(modifier: Modifier) {
             Button(
                 modifier = bModifier,
                 onClick = {
-                    val db = DBHelper(context, null)
-
                     val cursor = db.getName()
-
-                    cursor!!.moveToFirst()
-                    lName += "\n" + cursor.getString(cursor.getColumnIndex(DBHelper.NAME_COl))
-                    lAge += "\n" + cursor.getString(cursor.getColumnIndex(DBHelper.AGE_COL))
-
-                    while(cursor.moveToNext()){
-                        lName += "\n" + cursor.getString(cursor.getColumnIndex(DBHelper.NAME_COl))
-                        lAge += "\n" + cursor.getString(cursor.getColumnIndex(DBHelper.AGE_COL))
+                    if (cursor != null && cursor.moveToFirst()) {
+                        lName = "Nombre"
+                        lAge = "Edad"
+                        do {
+                            val id = cursor.getInt(cursor.getColumnIndex(DBHelper.ID_COL))
+                            val name = cursor.getString(cursor.getColumnIndex(DBHelper.NAME_COl))
+                            val age = cursor.getString(cursor.getColumnIndex(DBHelper.AGE_COL))
+                            lName += "\n$id - $name"
+                            lAge += "\n$age"
+                        } while (cursor.moveToNext())
+                        cursor.close()
                     }
-
-                    cursor.close()
                 }
             ) {
                 Text(text = "Mostrar")
