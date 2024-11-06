@@ -175,20 +175,13 @@ fun MainActivity(modifier: Modifier) {
             onClick = {
                 if (selectedId != -1) {
                     db.updateName(selectedId, nameValue, ageValue)
-                    Toast.makeText(
-                        context,
-                        "Registro actualizado",
-                        Toast.LENGTH_LONG
-                    ).show()
+                    Toast.makeText(context, "Registro actualizado", Toast.LENGTH_LONG).show()
                     selectedId = -1
                     nameValue = ""
                     ageValue = ""
+                    loadData()
                 } else {
-                    Toast.makeText(
-                        context,
-                        "Selecciona un registro para actualizar",
-                        Toast.LENGTH_LONG
-                    ).show()
+                    Toast.makeText(context, "Selecciona un registro para actualizar", Toast.LENGTH_LONG).show()
                 }
             }
         ) {
