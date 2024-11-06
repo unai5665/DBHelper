@@ -22,7 +22,7 @@ IDE: Android Studio
 
 Instalación
 Clona este repositorio:
-git clone https://github.com/tu-usuario/tu-repositorio.git
+git clone [https://github.com/tu-usuario/tu-repositorio.git](https://github.com/unai5665/DBHelper/tree/master)
 Abre el proyecto en Android Studio.
 Conecta un dispositivo Android o usa el emulador de Android.
 Ejecuta la aplicación.
